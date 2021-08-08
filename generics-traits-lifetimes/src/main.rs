@@ -1,25 +1,15 @@
-use std::cmp::PartialOrd;
+fn main() {
+    let string1 = String::from("abcd");
+    let string2 = "xyz";
 
-fn largest<T: PartialOrd + Copy>(list: &[T]) -> T {
-    let mut largest = list[0];
-
-    for &item in list {
-        if item > largest {
-            largest = item;
-        }
-    }
-
-    largest
+    let result = longest(string1.as_str(), string2);
+    println!("The longest string is {}", result);
 }
 
-fn main() {
-    let number_list = vec![34, 50, 24, 100, 65];
-
-    let result = largest(&number_list);
-    println!("The largest number is {}", result);
-
-    let number_list = vec!['y', 'm', 'a', 'q'];
-
-    let result = largest(&number_list);
-    println!("The largest char is {}", result);
+fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
+    if x.len() > y.len() {
+        x
+    } else {
+        y
+    }
 }
